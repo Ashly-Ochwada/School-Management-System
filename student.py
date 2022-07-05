@@ -9,7 +9,7 @@ def manageStudents():
 	x = "#" * 30
 	y = "=" * 28
 	global bye
-	bye = "\n {}\n# {} #\n# ===> Brought To You By <===  #\n# ===> code-projects.org <===  #\n# {} #\n {}".format(x, y, y, x)
+	bye = "\n {}\n# {} #\n#  #\n# {} #\n {}".format(x, y, y, x)
 
 	
 	print(""" 
@@ -20,69 +20,70 @@ def manageStudents():
  |======================================================|
   ------------------------------------------------------
 
-Enter 1 : To View Student's List 
-Enter 2 : To Add New Student 
-Enter 3 : To Search Student 
-Enter 4 : To Remove Student 
+Enter 1 : To View all Students
+Enter 2 : To Add A New Student 
+Enter 3 : To Search For A Student 
+Enter 4 : To Remove A Student 
 		
 		""")
 
-	try: #Using Exceptions For Validation
-		userInput = int(input("Please Select An Above Option: ")) #Will Take Input From User
+	try: # Exceptions For Validation
+		userInput = int(input("Please Select An Option From Above: ")) 
 	except ValueError:
-		exit("\nHy! That's Not A Number") #Error Message
+		exit("\nHello! That's Not A Number") 
 	else:
-		print("\n") #Print New Line
+		print("\n") 
 
-	#Checking Using Option	
-	if(userInput == 1): #This Option Will Print List Of Students
+		
+	if(userInput == 1): 
 		print("List Students\n")  
 		for students in listOfStudent:
 			print("=> {}".format(students))
 
-	elif(userInput == 2): #This Option Will Add New Student In The List
-		newStd = input("Enter New Student: ")
+	elif(userInput == 2): 
+		newStd = input("Enter A New Student: ")
 		if(newStd in listOfStudent): #This Condition Checking The New Student Is Already In List Ur Not
 			print("\nThis Student {} Already In The Database".format(newStd))  #Error Message
 		else:	
 			listOfStudent.append(newStd)
-			print("\n=> New Student {} Successfully Add \n".format(newStd))
+			print("\n=> New Student {} Successfully Added \n".format(newStd))
 			for students in listOfStudent:
 				print("=> {}".format(students))	
 
-	elif(userInput == 3): #This Option Will Search Student From The List
-		srcStd = input("Enter Student Name To Search: ")
-		if(srcStd in listOfStudent): #This Condition Searching The Student
-			print("\n=> Record Found Of Student {}".format(srcStd))
+	elif(userInput == 3): 
+		srcStd = input("Enter A Student's Name To Search: ")
+		if(srcStd in listOfStudent):
+			print("\n=> Record Found Of The Student {}".format(srcStd))
 		else:
-			print("\n=> No Record Found Of Student {}".format(srcStd)) #Error Message
+			print("\n=> No Record Found Of The Student {}".format(srcStd)) 
 
-	elif(userInput == 4): #This Option Will Remove Student From The List
-		rmStd = input("Enter Student Name To Remove: ")
-		if(rmStd in listOfStudent): #This Condition Removing The Student From The List 
-			listOfStudent.remove(rmStd)
-			print("\n=> Student {} Successfully Deleted \n".format(rmStd))
+	elif(userInput == 4): 
+		removeStd = input("Enter Student Name To Remove: ")
+		if(removeStd in listOfStudent):
+			listOfStudent.remove(removeStd)
+			print("\n=> Student {} Successfully Deleted \n".format(removeStd))
 			for students in listOfStudent:
 				print("=> {}".format(students))
 		else:
-			print("\n=> No Record Found of This Student {}".format(rmStd)) #Error Message
+			print("\n=> No Record Found of This Student {}".format(removeStd)) #Error Message
 	 
-	elif(userInput < 1 or userInput > 4): #Validating User Option
-		print("Please Enter Valid Option")	#Error Message	
+	elif(userInput < 1 or userInput > 4): 
+		print("Please Enter Valid Option")	
 						
 
 manageStudents()
 
-def runAgain(): #Making Runable Problem1353
-	runAgn = input("\nwant To Run Again Y/n: ")
-	if(runAgn.lower() == 'y'):
+def tryingAgain(): 
+	continueAgain = input("\n want To Try Again Y/n: ")
+	if(continueAgain.lower() == 'y'):
 		if(platform.system() == "Windows"): #Checking User OS For Clearing The Screen
 			print(os.system('cls')) 
 		else:
 			print(os.system('clear'))
 		manageStudents()
-		runAgain()
+		# continueAgain()
 	else:
 		quit(bye) #Print GoodBye Message And Exit The Program
 
-runAgain()		
+tryingAgain()		
+ 
